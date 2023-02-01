@@ -1,11 +1,43 @@
-import { Center, Heading, isChakraTheme } from "@chakra-ui/react";
+import {
+  Button,
+  Center,
+  FormControl,
+  Grid,
+  Heading,
+  Image,
+  Input,
+  isChakraTheme,
+} from "@chakra-ui/react";
+import react, { useState, useEffect } from "react";
 import { data } from "../utils/data";
+import { Recipe } from "../components/Recipe";
 
 export const Recipes = () => {
+  const greeting = "Welcome to my Recipe Finder!";
+
+  const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {
+    setRecipes(data.hits);
+  }, []);
+
   return (
-    <Center h="100vh" flexDir="column">
+    <Center h="100%" flexDir="column" gap="50">
       <>
-        <Heading>Your Recipe App</Heading>
+        <Heading>{greeting}</Heading>
+
+        <Grid templateColumns="repeat(3, 1fr)" gap={20}>
+          {recipes.map((recipe, index) => (
+            <Recipe
+              image={recipe.recipe.image}
+              title={recipe.recipe.label}
+              mealType={recipe.recipe.mealType}
+              dishType={recipe.recipe.dishType}
+              dietLabels={recipe.recipe.dietLabels}
+              cautions={recipe.recipe.cautions}
+            />
+          ))}
+        </Grid>
       </>
     </Center>
   );

@@ -1,5 +1,6 @@
 import { React } from "react";
 import { Box, Heading, Image, Text, Badge } from "@chakra-ui/react";
+import { FilteredData } from "./ui/FilteredData";
 
 export const Recipe = ({
   title,

@@ -1,14 +1,5 @@
-import {
-  Button,
-  Center,
-  FormControl,
-  Grid,
-  Heading,
-  Image,
-  Input,
-  isChakraTheme,
-} from "@chakra-ui/react";
-import react, { useState, useEffect } from "react";
+import { Center, Grid, Heading } from "@chakra-ui/react";
+import React, { useState, useEffect } from "react";
 import { data } from "../utils/data";
 import { Recipe } from "../components/Recipe";
 
@@ -27,7 +18,7 @@ export const Recipes = () => {
         <Heading>{greeting}</Heading>
 
         <Grid templateColumns="repeat(3, 1fr)" gap={20}>
-          {recipes.map((recipe, index) => (
+          {recipes.map((recipe) => (
             <Recipe
               image={recipe.recipe.image}
               title={recipe.recipe.label}

@@ -1,15 +1,5 @@
 import { React } from "react";
-import {
-  Box,
-  Center,
-  Grid,
-  Heading,
-  Image,
-  ListItem,
-  Text,
-  UnorderedList,
-  Badge,
-} from "@chakra-ui/react";
+import { Box, Heading, Image, Text, Badge } from "@chakra-ui/react";
 
 export const Recipe = ({
   title,

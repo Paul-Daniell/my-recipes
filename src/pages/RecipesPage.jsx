@@ -1,8 +1,8 @@
-import { Center, Grid, Heading } from "@chakra-ui/react";
+import { Center, Grid, Heading, Button } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import { data } from "../utils/data";
 import { Recipe } from "../components/Recipe";
-import { FilteredData } from "../components/ui/FilteredData";
+import { SearchBar } from "../components/SearchBar";
 
 export const Recipes = () => {
   const greeting = "Welcome to my Recipe Finder!";
@@ -23,17 +23,20 @@ export const Recipes = () => {
     >
       <>
         <Heading>{greeting}</Heading>
-
+        <SearchBar setRecipes={setRecipes} recipes={recipes} />
+        {/* ... */}
         <Grid templateColumns="repeat(4, 1fr)" gap={6}>
           {recipes.map((recipe) => (
             <Recipe
               image={recipe.recipe.image}
               title={recipe.recipe.label}
+              healthLabels={recipe.recipe.healthLabels
+                .filter((label) => label === "Vegetarian" || label === "Vegan")
+                .join(" | ")}
               mealType={recipe.recipe.mealType}
               dishType={recipe.recipe.dishType}
-              dietLabels={recipe.recipe.dietLabels}
-              cautions={recipe.recipe.cautions}
-              healthLabels={recipe.recipe.healthLabels}
+              dietLabels={recipe.recipe.dietLabels.join(" | ")}
+              cautions={recipe.recipe.cautions.join(" | ")}
             />
           ))}
         </Grid>

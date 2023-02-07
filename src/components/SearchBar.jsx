@@ -1,32 +1,24 @@
 import { FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
+import { data } from "../utils/data";
 
-export const SearchBar = ({ setRecipes, recipes }) => {
+export const SearchBar = ({ setRecipes }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [originalRecipes, setOriginalRecipes] = useState([]);
-
-  useEffect(() => {
-    setOriginalRecipes([...recipes]);
-  }, []);
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
 
-    if (event.target.value === "") {
-      setRecipes(originalRecipes);
-    } else {
-      const filtered = originalRecipes.filter((recipe) => {
-        return (
-          recipe.recipe.label
-            .toLowerCase()
-            .includes(event.target.value.toLowerCase()) ||
-          recipe.recipe.healthLabels.some((label) =>
-            label.toLowerCase().includes(event.target.value.toLowerCase())
-          )
-        );
-      });
-      setRecipes(filtered);
-    }
+    const filtered = data.hits.filter((recipe) => {
+      return (
+        recipe.recipe.label
+          .toLowerCase()
+          .includes(event.target.value.toLowerCase()) ||
+        recipe.recipe.healthLabels.some((label) =>
+          label.toLowerCase().includes(event.target.value.toLowerCase())
+        )
+      );
+    });
+    setRecipes(filtered);
   };
 
   return (

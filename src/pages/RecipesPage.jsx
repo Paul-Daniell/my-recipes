@@ -7,11 +7,7 @@ import { SearchBar } from "../components/SearchBar";
 export const Recipes = () => {
   const greeting = "Welcome to my Recipe Finder!";
 
-  const [recipes, setRecipes] = useState([]);
-
-  useEffect(() => {
-    setRecipes(data.hits);
-  }, []);
+  const [recipes, setRecipes] = useState(data.hits);
 
   return (
     <Center

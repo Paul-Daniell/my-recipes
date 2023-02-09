@@ -37,21 +37,15 @@ export const Recipe = ({
       <Box p="6">
         {/* Details of the recipe */}
         <Box display="flex" flexDir="column" alignItems="baseline" gap={2}>
-          {/* Title of the recipe */}
           <Heading size="md">{title}</Heading>
-          {/* Meal Type */}
           <Badge borderRadius="4" px="2" colorScheme="orange">
             <Text>{mealType}</Text>
           </Badge>
-          {/* Health Labels */}
           <Badge borderRadius="4" px="2" colorScheme="red">
             <Text>{healthLabels}</Text>
           </Badge>
-          {/* Dish Type */}
           <Text>{dishType}</Text>
-          {/* Diet Labels */}
           <Text>{dietLabels}</Text>
-          {/* Cautions */}
           <Text>{cautions}</Text>
         </Box>
       </Box>

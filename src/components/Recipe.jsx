@@ -33,20 +33,33 @@ export const Recipe = ({
       }}
     >
       {/* Image of the recipe */}
-      <Image src={image} alt="" width="500px" height="350px"></Image>
-      <Box p="6">
+      <Image src={image} alt="" width="350px" height="200px"></Image>
+      <Box p="2">
         {/* Details of the recipe */}
-        <Box display="flex" flexDir="column" alignItems="baseline" gap={2}>
+        <Box
+          display="flex"
+          flexDir="column"
+          height="135px"
+          width="200px"
+          alignItems="baseline"
+          gap={2}
+        >
           <Heading size="md">{title}</Heading>
           <Badge borderRadius="4" px="2" colorScheme="orange">
-            <Text>{mealType}</Text>
+            {mealType}
+          </Badge>
+          <Badge borderRadius="4" px="2" colorScheme="green">
+            {healthLabels}
+          </Badge>
+          <Badge borderRadius="4" px="2">
+            {dishType}
+          </Badge>
+          <Badge borderRadius="4" px="2">
+            {dietLabels}
           </Badge>
           <Badge borderRadius="4" px="2" colorScheme="red">
-            <Text>{healthLabels}</Text>
+            {cautions}
           </Badge>
-          <Text>{dishType}</Text>
-          <Text>{dietLabels}</Text>
-          <Text>{cautions}</Text>
         </Box>
       </Box>
     </Box>

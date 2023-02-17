@@ -22,7 +22,6 @@ export const Recipe = ({
   // Return the Recipe component with image, title, meal type, health labels, dish type, diet labels and cautions
   return (
     <Box
-      maxW="lg"
       borderWidth="1px"
       borderRadius="lg"
       overflow="hidden"

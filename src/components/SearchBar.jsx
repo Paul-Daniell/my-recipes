@@ -27,7 +27,10 @@ export const SearchBar = ({ setRecipes }) => {
   };
 
   return (
-    <FormControl width="400px" flexDir="column">
+    <FormControl
+      width={{ base: "200px", md: "300px", lg: "400px" }}
+      flexDir="column"
+    >
       {/* Label for the search input */}
       <FormLabel htmlFor="search">Search Recipes</FormLabel>
       {/* Search input */}

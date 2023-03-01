@@ -1,4 +1,4 @@
-import { React } from "react";
+import React from "react";
 import {
   Box,
   Heading,
@@ -9,16 +9,6 @@ import {
   GridItem,
 } from "@chakra-ui/react";
 import { data } from "../utils/data";
-
-// Recipe component to display a single recipe
-// Props:
-// - title: string (required)
-// - mealType: string (required)
-// - image: string (required)
-// - dishType: string (required)
-// - dietLabels: string (required)
-// - cautions: string (required)
-// - healthLabels: string (required)
 
 export const RecipeDetails = ({
   title,
@@ -32,71 +22,104 @@ export const RecipeDetails = ({
   totalTime,
   Yield,
 }) => {
-  // Return the Recipe component with image, title, meal type, health labels, dish type, diet labels and cautions
+  const handleRefresh = () => {
+    window.location.reload();
+  };
+
   return (
-    <Box borderWidth="1px" borderRadius="lg" width="1000px">
+    <Box
+      borderWidth="1px"
+      borderRadius="lg"
+      width={{ base: "400px", md: "680px", lg: "850px" }}
+    >
       <Grid
-        gridTemplateRows="repeat(4, 1fr) 300px, 50px, auto"
-        gridTemplateColumns="repeat(2, 1fr)"
+        gridTemplateRows="repeat(4, 1fr) 300px, auto, auto"
+        gridTemplateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }}
         gap={5}
       >
         <GridItem rowSpan={1}>
           <Image
             src={image}
             alt=""
-            width="600px"
+            width={{ base: "400px", lg: "600px" }}
             height="200px"
             borderTopLeftRadius={4}
+            borderTopRightRadius={{ base: "4", md: "0" }}
           ></Image>
         </GridItem>
         <GridItem>
           <Box display="flex" flexDir="column" gap={2}>
             <Heading size="md">{title}</Heading>
-            <Badge borderRadius="4" px="2" colorScheme="orange">
+            <Badge
+              borderRadius="4"
+              px="2"
+              colorScheme="orange"
+              width={{ base: "240px", lg: "400px" }}
+            >
               {mealType}
             </Badge>
-            <Badge borderRadius="4" px="2" colorScheme="yellow">
+            <Badge
+              borderRadius="4"
+              px="2"
+              colorScheme="yellow"
+              width={{ base: "240px", lg: "400px" }}
+            >
               {dishType}
             </Badge>
-            <Badge borderRadius="4" px="2" colorScheme="pink">
+            <Badge
+              borderRadius="4"
+              px="2"
+              colorScheme="pink"
+              width={{ base: "240px", lg: "400px" }}
+            >
               {dietLabels}
             </Badge>
-            <Badge borderRadius="4" px="2" colorScheme="red">
+            <Badge
+              borderRadius="4"
+              px="2"
+              colorScheme="red"
+              width={{ base: "240px", lg: "400px" }}
+            >
               Cautions: {cautions}
             </Badge>
-            <Badge borderRadius="4" px="2" colorScheme="whatsapp">
+            <Badge
+              borderRadius="4"
+              px="2"
+              colorScheme="whatsapp"
+              width={{ base: "240px", lg: "400px" }}
+            >
               Total coocking time: {totalTime} minutes
             </Badge>
-            <Badge borderRadius="4" px="2" colorScheme="facebook">
+            <Badge
+              borderRadius="4"
+              px="2"
+              colorScheme="facebook"
+              width={{ base: "240px", lg: "400px" }}
+            >
               Servings: {Yield}
             </Badge>
           </Box>
         </GridItem>
         <GridItem rowSpan={1} width="400px" px="2">
-          <Badge borderRadius="4" px="2" colorScheme="green">
+          <Box borderRadius="4" px="2" colorScheme="green">
             <Text fontSize="lg" fontWeight={500}>
               Health Labels:
             </Text>
-          </Badge>
-        </GridItem>
-        <GridItem rowSpan={1} width="400px" px="2">
-          <Badge borderRadius="4" px="2" colorScheme="linkedin">
-            <Text fontSize="lg" fontWeight={500}>
-              Ingredients:
-            </Text>
-          </Badge>
-        </GridItem>
-        <Box borderBottomLeftRadius={4} bg="#C6F6D5">
-          <GridItem rowSpan={1} width="400px" px="2">
+
             <Text>{healthLabels}</Text>
-          </GridItem>
-        </Box>
-        <Box>
-          <GridItem rowSpan={1} width="400px" px="2">
-            <Text>{ingredientLines}</Text>
-          </GridItem>
-        </Box>
+          </Box>
+        </GridItem>
+        <GridItem rowSpan={1} width={{ base: "250px", lg: "400px" }} px="2">
+          <Text fontSize="lg" fontWeight={500}>
+            Ingredients:
+          </Text>
+
+          <Text>{ingredientLines}</Text>
+        </GridItem>
       </Grid>
+      <Box display="flex" justifyContent="center" py="4">
+        <button onClick={handleRefresh}>Back to Recipes</button>
+      </Box>
     </Box>
   );
 };

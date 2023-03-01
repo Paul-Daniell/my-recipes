@@ -1,5 +1,5 @@
 import { React } from "react";
-import { Box, Heading, Image, Text, Badge } from "@chakra-ui/react";
+import { Box, Heading, Image, Text, Badge, Flex } from "@chakra-ui/react";
 
 // Recipe component to display a single recipe
 // Props:

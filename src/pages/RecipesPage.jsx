@@ -4,10 +4,11 @@ import { data } from "../utils/data";
 import { Recipe } from "../components/Recipe";
 import { SearchBar } from "../components/SearchBar";
 import { RecipeDetails } from "../components/RecipeDetails";
+import { totalNutrients } from "../components/RecipeDetails";
 
 export const Recipes = () => {
   // Define a greeting message
-  const greeting = "Welcome to my Recipe Finder!";
+  const greeting = "Yum Yum Recipe Finder!";
 
   // Initialize the recipes state with data.hits and selected recipe state as null
   const [recipes, setRecipes] = useState(data.hits);
@@ -29,9 +30,13 @@ export const Recipes = () => {
     <Center marginLeft="20px" marginRight="20px" flexDir="column" gap="50">
       <>
         {/* Display the greeting message */}
-        <Heading>{greeting}</Heading>
-        {/* Pass the setRecipes and recipes state to the SearchBar component */}
-        <SearchBar setRecipes={setRecipes} recipes={recipes} />
+        <Heading fontSize={{ base: "2rem", md: "3rem", lg: "4rem" }}>
+          {greeting}
+        </Heading>
+        {/* Conditionally display the SearchBar component based on the selectedRecipe state */}
+        {!selectedRecipe && (
+          <SearchBar setRecipes={setRecipes} recipes={recipes} />
+        )}
         {/* Conditionally display either the Recipe or Recipes component based on the selectedRecipe state */}
         {selectedRecipe ? (
           <RecipeDetails
@@ -51,7 +56,11 @@ export const Recipes = () => {
           />
         ) : (
           <Grid
-            gridTemplateColumns="repeat(4, 1fr)"
+            gridTemplateColumns={{
+              base: "repeat(1, 1fr)",
+              md: "repeat(2, 1fr)",
+              lg: "repeat(3, 1fr)",
+            }}
             gridTemplateRows="repeat(5, 1fr)"
             rowGap={150}
             minWidth="250px"

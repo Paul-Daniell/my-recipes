@@ -4,7 +4,6 @@ import { data } from "../utils/data";
 import { Recipe } from "../components/Recipe";
 import { SearchBar } from "../components/SearchBar";
 import { RecipeDetails } from "../components/RecipeDetails";
-import { totalNutrients } from "../components/RecipeDetails";
 
 export const Recipes = () => {
   // Define a greeting message

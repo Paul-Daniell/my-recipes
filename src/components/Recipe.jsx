@@ -44,6 +44,7 @@ export const Recipe = ({
           gap={2}
         >
           <Heading size="md">{title}</Heading>
+
           <Badge borderRadius="4" px="2" colorScheme="orange">
             {mealType}
           </Badge>

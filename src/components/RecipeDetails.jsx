@@ -7,6 +7,8 @@ import {
   Badge,
   Grid,
   GridItem,
+  Button,
+  Flex,
 } from "@chakra-ui/react";
 import { data } from "../utils/data";
 
@@ -21,10 +23,13 @@ export const RecipeDetails = ({
   ingredientLines,
   totalTime,
   Yield,
+  totalNutrients,
 }) => {
   const handleRefresh = () => {
     window.location.reload();
   };
+
+  console.log("totalNutrients.NA:" + totalNutrients.NA.quantity + "mg");
 
   return (
     <Box
@@ -116,10 +121,31 @@ export const RecipeDetails = ({
 
           <Text>{ingredientLines}</Text>
         </GridItem>
+        <GridItem gap={6}>
+          <Text
+            color="gray.700"
+            fontSize="sm"
+            fontWeight="bold"
+            textAlign="center"
+          >
+            Total Nutrients:{"  "}
+            <br />
+            {`${totalNutrients.ENERC_KCAL.quantity.toFixed()} calories`} <br />
+            {`${totalNutrients.NA.quantity.toFixed()} mg Sodium`}
+            <br />
+            {`${totalNutrients.CHOLE.quantity.toFixed()} mg Cholesterol`}
+            <br />
+            {`${totalNutrients.PROCNT.quantity.toFixed()} g Protein`}
+            <br />
+            {`${totalNutrients.FAT.quantity.toFixed()} g Fat`}
+            <br />
+            {`${totalNutrients.CHOCDF.quantity.toFixed()} g Carbs`}
+          </Text>
+        </GridItem>
+        <Box display="flex" justifyContent="center" py="4">
+          <Button onClick={handleRefresh}>Back to Recipes</Button>
+        </Box>
       </Grid>
-      <Box display="flex" justifyContent="center" py="4">
-        <button onClick={handleRefresh}>Back to Recipes</button>
-      </Box>
     </Box>
   );
 };

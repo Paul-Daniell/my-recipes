@@ -51,6 +51,7 @@ export const Recipes = () => {
             totalTime={selectedRecipe.totalTime}
             Yield={selectedRecipe.yield}
             ingredientLines={selectedRecipe.ingredientLines.join(" | ")}
+            totalNutrients={selectedRecipe.totalNutrients}
             onClose={resetSelectedRecipe}
           />
         ) : (
@@ -73,6 +74,7 @@ export const Recipes = () => {
                   backgroundColor: "white",
                 }}
                 onClick={() => handleRecipeClick(recipe)}
+                key={recipe.recipe.url}
               >
                 <GridItem colSpan="1">
                   <Recipe
